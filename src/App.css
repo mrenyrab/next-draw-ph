@@ -1,0 +1,85 @@
+.dashboard-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 0, rgba(212, 168, 67, 0.22), transparent 26%),
+    linear-gradient(#10243f 0 240px, #f3efe6 240px);
+}
+
+.dashboard-header {
+  background: transparent;
+}
+
+.dashboard-kicker {
+  letter-spacing: 0.14em;
+  color: #e7c56a;
+}
+
+.dashboard-lead {
+  max-width: 40rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.05rem;
+}
+
+.dashboard-body {
+  margin-top: -1.5rem;
+}
+
+.number-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 4.25rem;
+}
+
+.number-count {
+  font-size: 0.75rem;
+  color: #667085;
+}
+
+.lotto-ball {
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 6px 12px rgba(16, 36, 63, 0.12);
+}
+
+.lotto-ball-hot {
+  color: #7c2d12;
+  background: radial-gradient(circle at 35% 30%, #fff4d6, #f0a05a 55%, #e07a3d);
+}
+
+.lotto-ball-cold {
+  color: #0c4a6e;
+  background: radial-gradient(circle at 35% 30%, #f8fbff, #9fd4f2 55%, #4aa3d8);
+}
+
+.lotto-ball-pick {
+  width: 2.6rem;
+  height: 2.6rem;
+  color: #10243f;
+  background: radial-gradient(circle at 35% 30%, #fffdf6, #f3d98a 58%, #d4a843);
+}
+
+.pick-card {
+  background: #fbfaf6;
+  border: 1px solid #efe6d2;
+}
+
+.smart-pick-button {
+  color: #10243f;
+  font-weight: 700;
+  border: none;
+}
+
+.smart-pick-button:hover,
+.smart-pick-button:focus {
+  color: #10243f;
+}
