@@ -87,7 +87,7 @@ export default function Dashboard() {
       <header className="dashboard-header text-white">
         <Container className="py-4 py-md-5">
           <p className="text-uppercase small fw-semibold dashboard-kicker mb-2">
-            Philippine Charity Sweepstakes Office
+            Lotto Results Hub PH
           </p>
           <h1 className="display-6 fw-semibold mb-2">Lotto Analytics</h1>
           <p className="lead mb-0 dashboard-lead">
@@ -125,14 +125,14 @@ export default function Dashboard() {
               </Col>
               <Col md={6} lg={8}>
                 <p className="text-secondary mb-0">
-                  Showing results for{' '}
-                  <strong>{LOTTO_GAME_LABELS[game]}</strong>
+                  Showing results for <strong>{LOTTO_GAME_LABELS[game]}</strong>
                   {frequency ? (
                     <>
-                      {' '}
-                      across{' '}
-                      <strong>{frequency.totalDrawsAnalyzed}</strong> analyzed
-                      draws.
+                      {" "}
+                      across <strong>
+                        {frequency.totalDrawsAnalyzed}
+                      </strong>{" "}
+                      analyzed draws.
                     </>
                   ) : null}
                 </p>
@@ -228,7 +228,7 @@ export default function Dashboard() {
                       Generating…
                     </>
                   ) : (
-                    'Generate Smart Pick'
+                    "Generate Smart Pick"
                   )}
                 </Button>
               </div>
@@ -238,14 +238,18 @@ export default function Dashboard() {
               ) : null}
 
               {picksError ? (
-                <Alert variant="danger" className="mb-0" data-testid="picks-error">
+                <Alert
+                  variant="danger"
+                  className="mb-0"
+                  data-testid="picks-error"
+                >
                   {picksError}
                 </Alert>
               ) : null}
 
               {!picksError && picks.length === 0 && !picksLoading ? (
                 <p className="text-secondary mb-0" data-testid="picks-empty">
-                  No combinations yet. Generate a Smart Pick for{' '}
+                  No combinations yet. Generate a Smart Pick for{" "}
                   {LOTTO_GAME_LABELS[game]}.
                 </p>
               ) : null}
@@ -253,12 +257,15 @@ export default function Dashboard() {
               {picks.length > 0 ? (
                 <Row className="g-3" data-testid="smart-picks">
                   {picks.map((pick) => (
-                    <Col md={4} key={pick.numbers.join('-')}>
+                    <Col md={4} key={pick.numbers.join("-")}>
                       <Card className="h-100 pick-card">
                         <Card.Body>
                           <div className="d-flex flex-wrap gap-2 mb-3">
                             {pick.numbers.map((number) => (
-                              <span key={number} className="lotto-ball lotto-ball-pick">
+                              <span
+                                key={number}
+                                className="lotto-ball lotto-ball-pick"
+                              >
                                 {formatBall(number)}
                               </span>
                             ))}

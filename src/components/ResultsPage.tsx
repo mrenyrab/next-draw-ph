@@ -89,7 +89,7 @@ export default function ResultsPage() {
       <header className="dashboard-header text-white">
         <Container className="py-4 py-md-5">
           <p className="text-uppercase small fw-semibold dashboard-kicker mb-2">
-            Philippine Charity Sweepstakes Office
+            Lotto Results Hub PH
           </p>
           <h1 className="display-6 fw-semibold mb-2">Lotto Results Log</h1>
           <p className="lead mb-0 dashboard-lead">
@@ -157,7 +157,7 @@ export default function ResultsPage() {
                     className="w-100 smart-pick-button"
                     disabled={loading}
                   >
-                    {loading ? 'Filtering…' : 'Filter'}
+                    {loading ? "Filtering…" : "Filter"}
                   </Button>
                 </Col>
               </Row>
@@ -182,7 +182,7 @@ export default function ResultsPage() {
               Recent Draw Results
             </h2>
             <span className="text-secondary">
-              {results.length} {results.length === 1 ? 'draw' : 'draws'}
+              {results.length} {results.length === 1 ? "draw" : "draws"}
             </span>
           </div>
 
