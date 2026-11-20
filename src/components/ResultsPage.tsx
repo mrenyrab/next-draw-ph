@@ -16,6 +16,7 @@ import {
   type LottoGame,
   type LottoDrawResult,
 } from '../api/types';
+import BackendWakeupNotice from './BackendWakeupNotice';
 import { useLottoResults } from '../hooks/useLottoResults';
 
 function formatLocalDate(date: Date): string {
@@ -205,7 +206,10 @@ export default function ResultsPage() {
                 <Spinner animation="border" variant="primary">
                   <span className="visually-hidden">Loading draw results</span>
                 </Spinner>
-                <span>Loading draw results…</span>
+                <div>
+                  <div>Loading draw results…</div>
+                  <BackendWakeupNotice testId="results-backend-wakeup" />
+                </div>
               </div>
             ) : null}
           </div>

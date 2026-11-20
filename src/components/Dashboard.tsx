@@ -17,6 +17,7 @@ import {
   type LottoGame,
   type NumberFrequency,
 } from '../api/types';
+import BackendWakeupNotice from './BackendWakeupNotice';
 import { useLottoStats } from '../hooks/useLottoStats';
 
 function formatBall(number: number): string {
@@ -162,7 +163,10 @@ export default function Dashboard() {
                 >
                   <span className="visually-hidden">Loading statistics</span>
                 </Spinner>
-                <span>Loading statistics for {LOTTO_GAME_LABELS[game]}…</span>
+                <div>
+                  <span>Loading statistics for {LOTTO_GAME_LABELS[game]}…</span>
+                  <BackendWakeupNotice testId="frequency-backend-wakeup" />
+                </div>
               </Card.Body>
             </Card>
           ) : null}
@@ -228,6 +232,10 @@ export default function Dashboard() {
                   )}
                 </Button>
               </div>
+
+              {picksLoading ? (
+                <BackendWakeupNotice testId="picks-backend-wakeup" />
+              ) : null}
 
               {picksError ? (
                 <Alert variant="danger" className="mb-0" data-testid="picks-error">

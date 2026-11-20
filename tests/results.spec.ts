@@ -66,7 +66,7 @@ test('opens Recent Draw Results and renders filtered draw details', async ({
 
 test('shows a loading overlay while results are being fetched', async ({ page }) => {
   await page.route('**/lotto/draws/**', async (route) => {
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    await new Promise((resolve) => setTimeout(resolve, 2600));
     await route.fulfill({
       status: 200,
       contentType: 'application/json',
@@ -78,6 +78,7 @@ test('shows a loading overlay while results are being fetched', async ({ page })
   await page.getByRole('tab', { name: 'Recent Draw Results' }).click();
 
   await expect(page.getByTestId('results-loading')).toBeVisible();
+  await expect(page.getByTestId('results-backend-wakeup')).toBeVisible();
   await expect(page.getByTestId('results-alert')).toContainText('No draw results');
 });
 
