@@ -1,3 +1,13 @@
+.app-navigation .nav-link {
+  min-height: 2.75rem;
+  color: #475467;
+  font-weight: 600;
+}
+
+.app-navigation .nav-link.active {
+  color: #10243f;
+}
+
 .dashboard-shell {
   min-height: 100vh;
   background:
@@ -61,6 +71,11 @@
   background: radial-gradient(circle at 35% 30%, #f8fbff, #9fd4f2 55%, #4aa3d8);
 }
 
+.lotto-ball-green {
+  color: #1b5e20;
+  background: radial-gradient(circle at 35% 30%, #f1f8e9, #81c784 55%, #43a047);
+}
+
 .lotto-ball-pick {
   width: 2.6rem;
   height: 2.6rem;
@@ -82,4 +97,33 @@
 .smart-pick-button:hover,
 .smart-pick-button:focus {
   color: #10243f;
+}
+
+.result-card {
+  background: #fffefa;
+}
+
+.result-prize strong {
+  color: #10243f;
+  font-size: 1.35rem;
+}
+
+.result-ball {
+  width: 2.65rem;
+  height: 2.65rem;
+}
+
+.results-loading-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  min-height: 12rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(243, 239, 230, 0.82);
+  color: #10243f;
+  font-weight: 600;
 }

@@ -43,6 +43,7 @@ async function fulfillFrequency(route: Route, delayMs = 0) {
 async function openDashboard(page: Page, delayMs = 0) {
   await page.route('**/stats/frequency/**', (route) => fulfillFrequency(route, delayMs));
   await page.goto('/');
+  await page.getByRole('tab', { name: 'Analytics & Smart Picks' }).click();
 }
 
 test('selecting a game loads hot and cold stats', async ({ page }) => {
@@ -54,6 +55,7 @@ test('selecting a game loads hot and cold stats', async ({ page }) => {
   });
 
   await page.goto('/');
+  await page.getByRole('tab', { name: 'Analytics & Smart Picks' }).click();
 
   await expect(page.getByTestId('stats-panel')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Hot numbers' })).toBeVisible();
@@ -93,6 +95,7 @@ test('shows a Bad Request alert when frequency returns 400', async ({ page }) =>
   );
 
   await page.goto('/');
+  await page.getByRole('tab', { name: 'Analytics & Smart Picks' }).click();
 
   const alert = page.getByTestId('frequency-error');
   await expect(alert).toBeVisible();

@@ -4,6 +4,7 @@ import type {
   FrequencyData,
   GenerateData,
   GenerateType,
+  LottoDrawResult,
   LottoGame,
 } from './types';
 
@@ -92,6 +93,20 @@ export async function generateCombinations(
       },
       signal,
     },
+  );
+
+  return response.data.data;
+}
+
+export async function getDrawsForRange(
+  game: LottoGame,
+  from: string,
+  to: string,
+  signal?: AbortSignal,
+): Promise<LottoDrawResult[]> {
+  const response = await apiClient.get<ApiResponse<LottoDrawResult[]>>(
+    `/lotto/draws/${encodeGame(game)}`,
+    { params: { from, to }, signal },
   );
 
   return response.data.data;

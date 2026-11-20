@@ -48,3 +48,13 @@ export interface GenerateData {
 }
 
 export type GenerateType = 'smart' | 'random';
+
+export interface LottoDrawResult {
+  gameName: string;
+  type: string;
+  numbers: number[];
+  drawDate: string;
+  jackpot: number;
+  jackpotFormatted?: string;
+  winners?: number;
+}
