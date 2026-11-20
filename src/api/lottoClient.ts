@@ -8,12 +8,13 @@ import type {
   LottoGame,
 } from './types';
 
-export const API_BASE_URL = 'http://localhost:3000';
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
-    Accept: 'application/json',
+    Accept: "application/json",
   },
 });
 
@@ -32,10 +33,10 @@ interface ApiErrorBody {
 
 export function getApiErrorMessage(error: unknown): string | null {
   if (!axios.isAxiosError(error)) {
-    return 'Something went wrong. Please try again.';
+    return "Something went wrong. Please try again.";
   }
 
-  if (error.code === 'ERR_CANCELED') {
+  if (error.code === "ERR_CANCELED") {
     return null;
   }
 
@@ -43,22 +44,22 @@ export function getApiErrorMessage(error: unknown): string | null {
   const body = error.response?.data as ApiErrorBody | undefined;
   const rawMessage = body?.message;
   const detail = Array.isArray(rawMessage)
-    ? rawMessage.join(', ')
+    ? rawMessage.join(", ")
     : rawMessage || body?.error;
 
   if (status === 400) {
     return detail
       ? `Bad Request: ${detail}`
-      : 'Bad Request: the lotto game or query is not supported.';
+      : "Bad Request: the lotto game or query is not supported.";
   }
 
   if (!error.response) {
-    return 'Unable to reach the lotto API at http://localhost:3000.';
+    return `Unable to reach the lotto API at ${API_BASE_URL}.`;
   }
 
   return detail
-    ? `Request failed (${status ?? 'error'}): ${detail}`
-    : `Request failed (${status ?? 'error'}).`;
+    ? `Request failed (${status ?? "error"}): ${detail}`
+    : `Request failed (${status ?? "error"}).`;
 }
 
 export interface FrequencyQuery {
