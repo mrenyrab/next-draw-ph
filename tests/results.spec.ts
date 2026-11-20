@@ -32,6 +32,12 @@ test('opens Recent Draw Results and renders filtered draw details', async ({
   });
 
   await page.goto('/');
+  const coffeeButton = page.getByRole('contentinfo').getByTestId('buy-coffee-button');
+  await expect(coffeeButton).toHaveAttribute(
+    'href',
+    'https://buymeacoffee.com/mrenyrab',
+  );
+  await expect(coffeeButton).toHaveAttribute('target', '_blank');
   await page.getByRole('tab', { name: 'Recent Draw Results' }).click();
 
   await expect(page.getByRole('heading', { name: 'Lotto Results Log' })).toBeVisible();
