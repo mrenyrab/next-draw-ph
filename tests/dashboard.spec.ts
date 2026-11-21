@@ -20,6 +20,27 @@ function frequencyResponse(payload: FrequencyPayload) {
   };
 }
 
+function oddEvenResponse() {
+  return {
+    status: 200,
+    message: 'Success',
+    action_at: '2026-11-19T07:00:00.000Z',
+    data: {
+      gameName: '6/58',
+      totalDrawsAnalyzed: 128,
+      distribution: [
+        {
+          pattern: '3 Odd / 3 Even',
+          odd: 3,
+          even: 3,
+          count: 40,
+          percentage: 31.25,
+        },
+      ],
+    },
+  };
+}
+
 async function fulfillFrequency(route: Route, delayMs = 0) {
   const url = new URL(route.request().url());
   const encodedGame = url.pathname.split('/').pop() ?? '';
@@ -42,6 +63,13 @@ async function fulfillFrequency(route: Route, delayMs = 0) {
 
 async function openDashboard(page: Page, delayMs = 0) {
   await page.route('**/stats/frequency/**', (route) => fulfillFrequency(route, delayMs));
+  await page.route('**/stats/odd-even/**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(oddEvenResponse()),
+    }),
+  );
   await page.goto('/');
   await page.getByRole('tab', { name: 'Analytics & Smart Picks' }).click();
 }
@@ -53,6 +81,13 @@ test('selecting a game loads hot and cold stats', async ({ page }) => {
     requested.push(route.request().url());
     await fulfillFrequency(route);
   });
+  await page.route('**/stats/odd-even/**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(oddEvenResponse()),
+    }),
+  );
 
   await page.goto('/');
   await page.getByRole('tab', { name: 'Analytics & Smart Picks' }).click();
@@ -91,6 +126,13 @@ test('shows a Bad Request alert when frequency returns 400', async ({ page }) =>
         message: 'Invalid game: 6/99. Supported games are: 6/58, 6/55, 6/49, 6/45, 6/42.',
         error: 'Bad Request',
       }),
+    }),
+  );
+  await page.route('**/stats/odd-even/**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(oddEvenResponse()),
     }),
   );
 

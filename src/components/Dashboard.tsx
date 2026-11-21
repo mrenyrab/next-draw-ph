@@ -18,6 +18,7 @@ import {
   type NumberFrequency,
 } from '../api/types';
 import BackendWakeupNotice from './BackendWakeupNotice';
+import LottoOddEven from './LottoOddEven';
 import { useLottoStats } from '../hooks/useLottoStats';
 
 function formatBall(number: number): string {
@@ -193,6 +194,10 @@ export default function Dashboard() {
               </Col>
             </Row>
           ) : null}
+        </section>
+
+        <section aria-label="Odd and even draw patterns" className="mb-4">
+          <LottoOddEven game={game} />
         </section>
 
         <section aria-labelledby="smart-pick-heading">
