@@ -215,8 +215,9 @@ export default function Dashboard() {
                     Smart Pick
                   </h2>
                   <p className="text-secondary mb-0">
-                    Generate three combinations that stay inside the usual sum
-                    range and mix hot numbers with the rest of the pool.
+                    Generate three suggested combinations guided by historical
+                    sum ranges, odd/even balance, and hot-number trends. Tap
+                    again to create another set.
                   </p>
                 </div>
                 <Button
