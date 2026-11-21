@@ -41,6 +41,28 @@ function oddEvenResponse() {
   };
 }
 
+function sumDistributionResponse() {
+  return {
+    status: 200,
+    message: 'Success',
+    action_at: '2026-11-21T02:59:12.823Z',
+    data: {
+      gameName: '6/58',
+      totalDrawsAnalyzed: 128,
+      distribution: [
+        {
+          range: '100 - 129',
+          count: 5,
+          minSum: 100,
+          maxSum: 128,
+          avgSum: 118.2,
+          percentage: 13.16,
+        },
+      ],
+    },
+  };
+}
+
 async function fulfillFrequency(route: Route, delayMs = 0) {
   const url = new URL(route.request().url());
   const encodedGame = url.pathname.split('/').pop() ?? '';
@@ -70,6 +92,13 @@ async function openDashboard(page: Page, delayMs = 0) {
       body: JSON.stringify(oddEvenResponse()),
     }),
   );
+  await page.route('**/stats/sum-distribution/**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(sumDistributionResponse()),
+    }),
+  );
   await page.goto('/');
   await page.getByRole('tab', { name: 'Analytics & Smart Picks' }).click();
 }
@@ -86,6 +115,13 @@ test('selecting a game loads hot and cold stats', async ({ page }) => {
       status: 200,
       contentType: 'application/json',
       body: JSON.stringify(oddEvenResponse()),
+    }),
+  );
+  await page.route('**/stats/sum-distribution/**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(sumDistributionResponse()),
     }),
   );
 
@@ -133,6 +169,13 @@ test('shows a Bad Request alert when frequency returns 400', async ({ page }) =>
       status: 200,
       contentType: 'application/json',
       body: JSON.stringify(oddEvenResponse()),
+    }),
+  );
+  await page.route('**/stats/sum-distribution/**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(sumDistributionResponse()),
     }),
   );
 

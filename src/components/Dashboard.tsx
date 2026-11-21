@@ -19,10 +19,11 @@ import {
 } from '../api/types';
 import BackendWakeupNotice from './BackendWakeupNotice';
 import LottoOddEven from './LottoOddEven';
-import { useLottoStats } from '../hooks/useLottoStats';
+import LottoSumDistribution from "./LottoSumDistribution";
+import { useLottoStats } from "../hooks/useLottoStats";
 
 function formatBall(number: number): string {
-  return String(number).padStart(2, '0');
+  return String(number).padStart(2, "0");
 }
 
 function NumberBoard({
@@ -35,7 +36,7 @@ function NumberBoard({
   title: string;
   subtitle: string;
   numbers: NumberFrequency[];
-  tone: 'hot' | 'cold';
+  tone: "hot" | "cold";
   testId: string;
 }) {
   return (
@@ -48,7 +49,7 @@ function NumberBoard({
             </Card.Title>
             <Card.Text className="text-secondary mb-0">{subtitle}</Card.Text>
           </div>
-          <Badge bg={tone === 'hot' ? 'danger' : 'primary'} pill>
+          <Badge bg={tone === "hot" ? "danger" : "primary"} pill>
             {numbers.length}
           </Badge>
         </div>
@@ -72,7 +73,7 @@ function NumberBoard({
 }
 
 export default function Dashboard() {
-  const [game, setGame] = useState<LottoGame>('6/58');
+  const [game, setGame] = useState<LottoGame>("6/58");
   const {
     frequency,
     frequencyLoading,
@@ -92,8 +93,9 @@ export default function Dashboard() {
           </p>
           <h1 className="display-6 fw-semibold mb-2">Lotto Analytics</h1>
           <p className="lead mb-0 dashboard-lead">
-            Hot and cold numbers from past draws, plus Smart Pick combinations
-            balanced for sum, parity, and frequency.
+            Explore number-frequency trends, odd/even patterns, sum
+            distributions, and Smart Picks based on past draws. For insight and
+            entertainment—not predictions or guarantees.
           </p>
         </Container>
       </header>
@@ -200,6 +202,10 @@ export default function Dashboard() {
           <LottoOddEven game={game} />
         </section>
 
+        <section aria-label="Draw sum distribution" className="mb-4">
+          <LottoSumDistribution game={game} />
+        </section>
+
         <section aria-labelledby="smart-pick-heading">
           <Card className="border-0 shadow-sm">
             <Card.Body>
@@ -291,11 +297,6 @@ export default function Dashboard() {
             </Card.Body>
           </Card>
         </section>
-        <p className="text-secondary ms-1 mt-2">
-          <span className="fw-bold">Note:</span> Smart Picks and statistical
-          trends are for entertainment and informational purposes only and do
-          not guarantee winnings.
-        </p>
       </Container>
     </div>
   );
