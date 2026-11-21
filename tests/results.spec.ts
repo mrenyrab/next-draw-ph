@@ -38,6 +38,9 @@ test('opens Recent Draw Results and renders filtered draw details', async ({
     'https://buymeacoffee.com/mrenyrab',
   );
   await expect(coffeeButton).toHaveAttribute('target', '_blank');
+  await expect(page.getByTestId('app-disclaimer')).toHaveText(
+    'This website is an independent statistical dashboard and is not affiliated with, endorsed by, or connected to the Philippine Charity Sweepstakes Office (PCSO).',
+  );
   await page.getByRole('tab', { name: 'Recent Draw Results' }).click();
 
   await expect(page.getByRole('heading', { name: 'Lotto Results Log' })).toBeVisible();

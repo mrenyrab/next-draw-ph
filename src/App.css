@@ -9,7 +9,7 @@
 }
 
 .buy-coffee-button {
-  padding: 0.45rem 0.9rem;
+  padding: 0.25rem 0.65rem;
   border: 1px solid #000;
   border-radius: 999px;
   background: #ffdd00;
@@ -17,7 +17,7 @@
   font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
 }
 
 .buy-coffee-button:hover,
@@ -30,6 +30,14 @@
 .app-footer {
   border-top: 1px solid rgba(16, 36, 63, 0.1);
   background: #fbfaf6;
+}
+
+.app-disclaimer {
+  max-width: 52rem;
+  color: #667085;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .dashboard-shell {

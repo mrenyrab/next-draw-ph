@@ -54,18 +54,25 @@ function App() {
         {activeView === "results" ? <ResultsPage /> : <Dashboard />}
       </div>
       <footer className="app-footer">
-        <Container className="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2 py-4">
-          <span className="text-secondary">Enjoying the dashboard?</span>
-          <Button
-            as="a"
-            href="https://buymeacoffee.com/mrenyrab"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="buy-coffee-button"
-            data-testid="buy-coffee-button"
-          >
-            Buy me a coffee
-          </Button>
+        <Container className="d-flex flex-column align-items-center gap-2 py-4">
+          <div className="d-flex flex-wrap align-items-center justify-content-center gap-2">
+            <span className="text-secondary">Enjoying the dashboard?</span>
+            <Button
+              as="a"
+              href="https://buymeacoffee.com/mrenyrab"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="buy-coffee-button"
+              data-testid="buy-coffee-button"
+            >
+              Buy me a coffee
+            </Button>
+          </div>
+          <p className="app-disclaimer mb-0" data-testid="app-disclaimer">
+            This website is an independent statistical dashboard and is not
+            affiliated with, endorsed by, or connected to the Philippine
+            Charity Sweepstakes Office (PCSO).
+          </p>
         </Container>
       </footer>
     </>

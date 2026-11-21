@@ -286,6 +286,11 @@ export default function Dashboard() {
             </Card.Body>
           </Card>
         </section>
+        <p className="text-secondary ms-1 mt-2">
+          <span className="fw-bold">Note:</span> Smart Picks and statistical
+          trends are for entertainment and informational purposes only and do
+          not guarantee winnings.
+        </p>
       </Container>
     </div>
   );
