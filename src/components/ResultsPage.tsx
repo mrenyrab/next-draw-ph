@@ -89,7 +89,7 @@ export default function ResultsPage() {
       <header className="dashboard-header text-white">
         <Container className="py-4 py-md-5">
           <p className="text-uppercase small fw-semibold dashboard-kicker mb-2">
-            Lotto Results Hub PH
+            Next Draw PH
           </p>
           <h1 className="display-6 fw-semibold mb-2">Lotto Results Log</h1>
           <p className="lead mb-0 dashboard-lead">
